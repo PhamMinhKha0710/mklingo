@@ -1,0 +1,54 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_shop)">
+<!-- Store building -->
+<rect x="6" y="14" width="20" height="14" rx="1" fill="#EC4899"/>
+<rect x="6" y="14" width="20" height="14" rx="1" stroke="#BE185D" stroke-width="0.5"/>
+
+<!-- Awning/canopy -->
+<path d="M5 14L6 11H26L27 14H5Z" fill="#F43F5E"/>
+<path d="M5 14H27V16H5V14Z" fill="#FB7185"/>
+<!-- Awning stripes -->
+<rect x="8" y="11" width="2" height="5" fill="#FECDD3" opacity="0.5"/>
+<rect x="13" y="11" width="2" height="5" fill="#FECDD3" opacity="0.5"/>
+<rect x="18" y="11" width="2" height="5" fill="#FECDD3" opacity="0.5"/>
+<rect x="23" y="11" width="2" height="5" fill="#FECDD3" opacity="0.5"/>
+
+<!-- Door -->
+<rect x="13" y="20" width="6" height="8" rx="0.5" fill="#BE185D"/>
+<circle cx="17.5" cy="24" r="0.5" fill="#FCD34D"/>
+
+<!-- Windows -->
+<rect x="8" y="18" width="3" height="3" rx="0.3" fill="#FEF3C7"/>
+<line x1="9.5" y1="18" x2="9.5" y2="21" stroke="#F59E0B" stroke-width="0.3"/>
+<line x1="8" y1="19.5" x2="11" y2="19.5" stroke="#F59E0B" stroke-width="0.3"/>
+
+<rect x="21" y="18" width="3" height="3" rx="0.3" fill="#FEF3C7"/>
+<line x1="22.5" y1="18" x2="22.5" y2="21" stroke="#F59E0B" stroke-width="0.3"/>
+<line x1="21" y1="19.5" x2="24" y2="19.5" stroke="#F59E0B" stroke-width="0.3"/>
+
+<rect x="8" y="23" width="3" height="3" rx="0.3" fill="#FEF3C7"/>
+<line x1="9.5" y1="23" x2="9.5" y2="26" stroke="#F59E0B" stroke-width="0.3"/>
+<line x1="8" y1="24.5" x2="11" y2="24.5" stroke="#F59E0B" stroke-width="0.3"/>
+
+<rect x="21" y="23" width="3" height="3" rx="0.3" fill="#FEF3C7"/>
+<line x1="22.5" y1="23" x2="22.5" y2="26" stroke="#F59E0B" stroke-width="0.3"/>
+<line x1="21" y1="24.5" x2="24" y2="24.5" stroke="#F59E0B" stroke-width="0.3"/>
+
+<!-- Base/ground -->
+<rect x="4" y="28" width="24" height="1" fill="#9CA3AF"/>
+
+<!-- Sign/Logo -->
+<circle cx="16" cy="7" r="3.5" fill="#FBBF24"/>
+<circle cx="16" cy="7" r="3.5" stroke="#F59E0B" stroke-width="0.5"/>
+<path d="M14.5 7L15.5 5L16.5 7L18 6L17 8L18.5 9L16.5 8.5L16 10L15.5 8.5L13.5 9L15 8L14 6L14.5 7Z" fill="#FFFFFF"/>
+
+<!-- Support pole for sign -->
+<rect x="15.5" y="10" width="1" height="4" fill="#D97706"/>
+</g>
+<defs>
+<clipPath id="clip0_shop">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+

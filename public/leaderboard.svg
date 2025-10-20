@@ -1,0 +1,41 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_leaderboard)">
+<!-- Podium base -->
+<rect x="4" y="26" width="24" height="3" rx="0.5" fill="#6B7280"/>
+
+<!-- 3rd place podium (left) -->
+<rect x="4" y="19" width="6" height="7" fill="#CD7F32"/>
+<path d="M4 19H10L9.5 18H4.5L4 19Z" fill="#A0522D"/>
+<text x="7" y="23.5" font-family="Arial" font-size="4" font-weight="bold" fill="white" text-anchor="middle">3</text>
+
+<!-- 2nd place podium (right) -->
+<rect x="22" y="16" width="6" height="10" fill="#C0C0C0"/>
+<path d="M22 16H28L27.5 15H22.5L22 16Z" fill="#A8A8A8"/>
+<text x="25" y="21.5" font-family="Arial" font-size="4" font-weight="bold" fill="white" text-anchor="middle">2</text>
+
+<!-- 1st place podium (center) -->
+<rect x="13" y="12" width="6" height="14" fill="#FFD700"/>
+<path d="M13 12H19L18.5 11H13.5L13 12Z" fill="#FFA500"/>
+<text x="16" y="19.5" font-family="Arial" font-size="4" font-weight="bold" fill="white" text-anchor="middle">1</text>
+
+<!-- Trophy on 1st place -->
+<ellipse cx="16" cy="8" rx="2" ry="1" fill="#FFD700"/>
+<path d="M14.5 8V10C14.5 10.8 15.2 11 16 11C16.8 11 17.5 10.8 17.5 10V8" fill="#FFA500"/>
+<rect x="15.5" y="10.5" width="1" height="1.5" fill="#FFA500"/>
+<path d="M14 8.5C13 8.5 12.5 7.5 12.5 7C12.5 6.5 13 6 13.5 6.5" stroke="#FFD700" stroke-width="0.5" fill="none"/>
+<path d="M18 8.5C19 8.5 19.5 7.5 19.5 7C19.5 6.5 19 6 18.5 6.5" stroke="#FFD700" stroke-width="0.5" fill="none"/>
+
+<!-- Crown on trophy -->
+<path d="M14.5 7L15 6L15.5 7L16 5.5L16.5 7L17 6L17.5 7H14.5Z" fill="#EF4444"/>
+
+<!-- Stars decoration -->
+<path d="M8 10L8.3 11L9.3 11.3L8.3 11.6L8 12.6L7.7 11.6L6.7 11.3L7.7 11L8 10Z" fill="#FBBF24"/>
+<path d="M24 10L24.3 11L25.3 11.3L24.3 11.6L24 12.6L23.7 11.6L22.7 11.3L23.7 11L24 10Z" fill="#FBBF24"/>
+</g>
+<defs>
+<clipPath id="clip0_leaderboard">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+

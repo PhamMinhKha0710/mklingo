@@ -1,29 +1,47 @@
-<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Green square body with rounded corners -->
-  <rect x="40" y="40" width="320" height="320" rx="40" fill="#5DC27B" transform="rotate(-2 200 200)"/>
-  
-  <!-- Left eye white -->
-  <ellipse cx="130" cy="160" rx="35" ry="40" fill="white"/>
-  <!-- Left eye pupil -->
-  <circle cx="125" cy="165" r="20" fill="#3D4759"/>
-  
-  <!-- Right eye white -->
-  <ellipse cx="270" cy="160" rx="35" ry="40" fill="white"/>
-  <!-- Right eye pupil -->
-  <circle cx="265" cy="165" r="20" fill="#3D4759"/>
-  
-  <!-- Left eyebrow -->
-  <path d="M 100 120 Q 130 105 160 115" stroke="#3D4759" stroke-width="12" stroke-linecap="round" fill="none"/>
-  
-  <!-- Right eyebrow -->
-  <path d="M 240 115 Q 270 105 300 120" stroke="#3D4759" stroke-width="12" stroke-linecap="round" fill="none"/>
-  
-  <!-- Mouth -->
-  <rect x="180" y="240" width="40" height="8" rx="4" fill="#3D4759"/>
-  
-  <!-- Shadow/depth effect -->
-  <rect x="350" y="80" width="20" height="280" rx="10" fill="#4CAF68" opacity="0.3" transform="rotate(-2 360 220)"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 230.84 230.84" style="enable-background:new 0 0 230.84 230.84;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:#8DCEAB;}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:#40455F;}
+	.st4{fill:#3E4360;}
+</style>
+<g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="112.6545" y1="196.8434" x2="112.6545" y2="28.7208" gradientTransform="matrix(0.99 0.141 0.141 -0.99 -7.9529 206.4552)">
+		<stop  offset="0" style="stop-color:#86CA92"/>
+		<stop  offset="0.1083" style="stop-color:#80C58A"/>
+		<stop  offset="0.4819" style="stop-color:#6DBA72"/>
+		<stop  offset="0.7925" style="stop-color:#61B463"/>
+		<stop  offset="1" style="stop-color:#5CB25E"/>
+	</linearGradient>
+	<path class="st0" d="M177.54,204.99L37.41,185.03C30.14,184,25.09,177.27,26.12,170L46.08,29.87c1.04-7.27,7.76-12.32,15.03-11.28
+		l140.13,19.96c7.27,1.04,12.32,7.76,11.28,15.03l-19.96,140.13C191.54,200.98,184.81,206.03,177.54,204.99z"/>
+	<g>
+		<path class="st1" d="M201.25,38.54L61.12,18.58c-7.27-1.04-14,4.02-15.03,11.28l-1.31,9.2c1.04-7.27,7.76-12.32,15.03-11.28
+			l140.13,19.96c7.27,1.04,12.32,7.76,11.28,15.03l1.31-9.2C213.57,46.31,208.52,39.58,201.25,38.54z"/>
+	</g>
+</g>
+<g>
+	<circle class="st2" cx="89.53" cy="101.23" r="21.56"/>
+	<circle class="st3" cx="89.53" cy="101.23" r="10.86"/>
+</g>
+<g>
+	<circle class="st2" cx="150.29" cy="112.1" r="21.56"/>
+	<circle class="st3" cx="150.29" cy="112.1" r="10.86"/>
+</g>
+<path class="st3" d="M108.66,103.09L69.67,85.43c-1.9-0.86-2.74-3.09-1.88-4.99l3.41-7.53c0.86-1.9,3.09-2.74,4.99-1.88l38.98,17.66
+	c1.9,0.86,2.74,3.09,1.88,4.99l-3.41,7.53C112.79,103.1,110.55,103.95,108.66,103.09z"/>
+<path class="st3" d="M176.07,95.19l-42.68,3.2c-2.08,0.16-3.88-1.4-4.04-3.48l-0.62-8.24c-0.16-2.08,1.4-3.88,3.48-4.04l42.68-3.2
+	c2.08-0.16,3.88,1.4,4.04,3.48l0.62,8.24C179.7,93.22,178.14,95.03,176.07,95.19z"/>
+<g>
+	<g>
+		<path class="st4" d="M104.46,150.44c5.13,2.78,10.92,4.01,16.71,3.17c5.8-0.85,10.7-4.07,14.13-8.76
+			c0.99-1.36,0.23-3.47-1.11-4.25c-1.57-0.92-3.26-0.24-4.25,1.11c-2.41,3.29-6.2,5.37-10.17,5.87c-4.09,0.51-8.46-0.49-12.17-2.5
+			C104.08,143.17,100.94,148.53,104.46,150.44L104.46,150.44z"/>
+	</g>
+</g>
 </svg>
-
-
-
