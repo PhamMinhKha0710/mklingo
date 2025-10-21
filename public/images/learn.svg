@@ -1,0 +1,44 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_learn)">
+<!-- Book pages -->
+<path d="M4 6C4 4.89543 4.89543 4 6 4H14C14.5523 4 15 4.44772 15 5V26C15 26.5523 14.5523 27 14 27H6C4.89543 27 4 26.1046 4 25V6Z" fill="#60A5FA"/>
+<path d="M17 5C17 4.44772 17.4477 4 18 4H26C27.1046 4 28 4.89543 28 6V25C28 26.1046 27.1046 27 26 27H18C17.4477 27 17 26.5523 17 26V5Z" fill="#34D399"/>
+
+<!-- Book spine -->
+<path d="M14 4H18V27H14V4Z" fill="#F59E0B"/>
+
+<!-- Book shadow/depth -->
+<path d="M4 25C4 26.1046 4.89543 27 6 27H26C27.1046 27 28 26.1046 28 25V27.5C28 28.3284 27.3284 29 26.5 29H5.5C4.67157 29 4 28.3284 4 27.5V25Z" fill="#1F2937"/>
+
+<!-- Bookmark -->
+<path d="M11 4H13V14L12 12.5L11 14V4Z" fill="#EF4444"/>
+
+<!-- Page lines (left page) -->
+<line x1="7" y1="9" x2="12" y2="9" stroke="#3B82F6" stroke-width="0.5" stroke-linecap="round"/>
+<line x1="7" y1="12" x2="12" y2="12" stroke="#3B82F6" stroke-width="0.5" stroke-linecap="round"/>
+<line x1="7" y1="15" x2="12" y2="15" stroke="#3B82F6" stroke-width="0.5" stroke-linecap="round"/>
+<line x1="7" y1="18" x2="12" y2="18" stroke="#3B82F6" stroke-width="0.5" stroke-linecap="round"/>
+
+<!-- Page lines (right page) -->
+<line x1="20" y1="9" x2="25" y2="9" stroke="#10B981" stroke-width="0.5" stroke-linecap="round"/>
+<line x1="20" y1="12" x2="25" y2="12" stroke="#10B981" stroke-width="0.5" stroke-linecap="round"/>
+<line x1="20" y1="15" x2="25" y2="15" stroke="#10B981" stroke-width="0.5" stroke-linecap="round"/>
+<line x1="20" y1="18" x2="25" y2="18" stroke="#10B981" stroke-width="0.5" stroke-linecap="round"/>
+
+<!-- Light bulb idea icon on left page -->
+<circle cx="9.5" cy="22" r="1.5" fill="#FCD34D"/>
+<path d="M9.5 20.5V21M9.5 23V23.5M11 21.5L10.5 22M9 22L8.5 21.5" stroke="#F59E0B" stroke-width="0.5" stroke-linecap="round"/>
+
+<!-- Star icon on right page -->
+<path d="M22.5 21L22.8 21.9L23.7 22.2L22.8 22.5L22.5 23.4L22.2 22.5L21.3 22.2L22.2 21.9L22.5 21Z" fill="#FBBF24"/>
+</g>
+<defs>
+<clipPath id="clip0_learn">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+
+
+
