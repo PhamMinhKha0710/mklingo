@@ -3,16 +3,17 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { InfinityIcon } from "lucide-react";
-
+import { Courses } from "@/db/schema";
 
 type Props = {
-    activeCourse: { imageSrc: string; title: string; };
+    activeCourse: typeof Courses.$inferSelect;
     hearts: number;
     points: number;
     hasActiveSubscription: boolean;
 };
 
-export const UserProgress = ({activeCourse, 
+export const UserProgress = ({
+    activeCourse, 
     points, 
     hearts, 
     hasActiveSubscription
