@@ -7,14 +7,14 @@ import { InfinityIcon } from "lucide-react";
 
 type Props = {
     activeCourse: { imageSrc: string; title: string; };
-    headers: number;
+    hearts: number;
     points: number;
     hasActiveSubscription: boolean;
 };
 
 export const UserProgress = ({activeCourse, 
     points, 
-    headers, 
+    hearts, 
     hasActiveSubscription
 }: Props) => {
     return(
@@ -51,7 +51,7 @@ export const UserProgress = ({activeCourse,
                 height={22}
                 className="mr-2"
                 />
-                {hasActiveSubscription ? <InfinityIcon className="h-4 w-4 stroke-[3]"/> : headers}
+                {hasActiveSubscription ? <InfinityIcon className="h-4 w-4 stroke-[3]"/> : hearts}
                </Button>
             </Link>
 
