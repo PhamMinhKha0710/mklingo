@@ -1,0 +1,37 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paint0_linear" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FFA500"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main circle with gradient -->
+  <circle cx="12" cy="12" r="10" fill="url(#paint0_linear)" filter="url(#glow)"/>
+
+  <!-- Inner shine effect -->
+  <circle cx="12" cy="12" r="8" fill="url(#shine)" opacity="0.3"/>
+
+  <!-- Star shape with 3D effect -->
+  <path d="M12 6L13.8 9.6L18 10.2L15 13.2L15.6 17.4L12 15.4L8.4 17.4L9 13.2L6 10.2L10.2 9.6L12 6Z"
+        fill="#FFE55C"
+        filter="url(#glow)"
+        stroke="#FFC107"
+        stroke-width="0.5"/>
+
+  <!-- Highlight spot -->
+  <circle cx="9" cy="9" r="1.5" fill="#FFFFFF" opacity="0.6"/>
+</svg>

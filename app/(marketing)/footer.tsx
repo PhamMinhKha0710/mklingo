@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="max-w-screen-lg mx-auto flex items-center justify-evenly h-full">
                 <Button size="lg" variant="ghost">
                     <Image 
-                        src="/eg.svg" 
+                        src="/images/eg.svg" 
                         alt="English" 
                         height={32}
                         width={40}
@@ -16,7 +16,7 @@ const Footer = () => {
                 </Button>
                 <Button size="lg" variant="ghost">
                     <Image 
-                        src="/vn.svg" 
+                        src="/images/vn.svg" 
                         alt="Vietnam" 
                         height={32}
                         width={40}
@@ -26,7 +26,7 @@ const Footer = () => {
                 </Button>
                 <Button size="lg" variant="ghost">
                     <Image 
-                        src="/america.svg" 
+                        src="/images/america.svg" 
                         alt="American" 
                         height={32}
                         width={40}
@@ -36,7 +36,7 @@ const Footer = () => {
                 </Button>
                 <Button size="lg" variant="ghost">
                     <Image 
-                        src="/duc.svg" 
+                        src="/images/duc.svg" 
                         alt="Germany" 
                         height={32}
                         width={40}
@@ -46,7 +46,7 @@ const Footer = () => {
                 </Button>
                 <Button size="lg" variant="ghost">
                     <Image 
-                        src="/us.svg" 
+                        src="/images/us.svg" 
                         alt="Australia" 
                         height={32}
                         width={40}
