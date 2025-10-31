@@ -56,7 +56,7 @@ const main = async () => {
                 id: 2,
                 courseId: 1, //English
                 title: "unit 2",
-                description: "Learn the basics of English",
+                description: "Learn the basics of Toiec",
                 order: 2,
             },
             
@@ -75,7 +75,37 @@ const main = async () => {
                 order: 2,
                 title: "Verbs",
                 description: "Learn the basics of English",
-            }
+            },
+            {
+                id: 3,
+                unitId: 1,
+                order: 3,
+                title: "Adjectives",
+                description: "Learn about adjectives and descriptions",
+            },
+        
+            // --- Math unit (unitId = 2) ---
+            {
+                id: 4,
+                unitId: 1,
+                order: 1,
+                title: "Lesson 1",
+                description: "Understand basic arithmetic",
+            },
+            {
+                id: 5,
+                unitId: 1,
+                order: 2,
+                title: "Fractions",
+                description: "Learn about fractions and decimals",
+            },
+            {
+                id: 6,
+                unitId: 1,
+                order: 3,
+                title: "Geometry Basics",
+                description: "Introduction to shapes and geometry",
+            },
         ]);
         await db.insert(schema.challenges).values([
             {
