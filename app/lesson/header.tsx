@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
+import { useExitModel } from "@/store/use-exit-model";
 
 
 type Props = {
@@ -13,11 +14,12 @@ type Props = {
     hasActiveSubscription: boolean;
 }
 export const Header = ({ hearts, percentage, hasActiveSubscription }: Props) => {
+    const { open } = useExitModel();
     return (
         <header className="lg:pt-[50px] pt-[20px] px-10 flex gap-x-7 
         items-center justify-between max-w-[1140px] mx-auto w-full">
             <X
-            onClick={() => redirect("/learn")}
+            onClick={open}
             className="text-slate-500 hover:opacity-75 transition cursor-pointer"
             />
             <Progress value={percentage}/>
