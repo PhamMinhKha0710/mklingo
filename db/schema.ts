@@ -60,7 +60,7 @@ export const challengesRelations = relations(challenges, ({ one, many }) => ({
         fields: [challenges.lessonId],
         references: [lessons.id],
     }),
-    Options: many(challengesOptions),
+    options: many(challengesOptions),
     challengesProgress: many(challengesProgress),
 }));    
 
