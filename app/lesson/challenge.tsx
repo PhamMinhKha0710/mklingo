@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Card } from "./card";
 type Props = {
     options: typeof challengesOptions.$inferSelect[];
-    onSelect: (option: string) => void;
+    onSelect: (id: number) => void;
     status: "correct" | "wrong" | "none";
     selectedOption?: number;
     disabled: boolean;
@@ -32,7 +32,7 @@ export const Challenge = ({
                 shortcut={`${i + 1}`}
                 //TODO : remove hardoded true
                 selected={selectedOption === option.id}
-                onClick={() => onSelect(option.id.toString())}
+                onClick={() => onSelect(option.id)}
                 status={status}
                 audioSrc={option.audioSrc}
                 disabled={disabled}
