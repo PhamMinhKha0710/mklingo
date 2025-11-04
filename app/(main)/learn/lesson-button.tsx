@@ -42,7 +42,7 @@ export const LessonButton = ({id, index, totalCount, locked, current, percentage
 
     const Icon = isCompleted ? Check : isLast ? Crown : Star;
 
-    const href = current ? `/lesson/${id}` : "/lesson";
+    const href = "/lesson";
 
 
     return (
