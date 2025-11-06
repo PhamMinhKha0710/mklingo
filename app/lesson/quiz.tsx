@@ -1,7 +1,7 @@
-    "use client";
+"use client";
 
 import { challenges, challengesOptions } from "@/db/schema";
-import { useState, useTransition } from "react";
+import { use, useState, useTransition, useEffect } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
@@ -9,6 +9,11 @@ import { Footer } from "./footer";
 import { toast } from "sonner";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { reduceHearts } from "@/actions/user-progress";
+import { useAudio, useWindowSize, useMount } from "react-use";
+import Image from "next/image";
+import { ResultCard } from "./result-card";
+import { useRouter } from "next/navigation";
+import Confetti from "react-confetti";
 
 type Props = {
     initialLessonId: number;
@@ -28,7 +33,26 @@ export const Quiz = ({
     initialLessonChallenges,
     userSubscription,
 }: Props) => {
+    const {width, height} = useWindowSize();
+    const router = useRouter();
+    const [
+        correctAudio,
+        _c,
+        correctControls
+    ] = useAudio({src: "/audio/correct.mp3"});
+    const [
+        incorrectAudio,
+        _i,
+        incorrectControls
+    ] = useAudio({src: "/audio/incorrect.mp3"});
+    const [
+        finishAudio,
+        _f,
+        finishControls
+    ] = useAudio({src: "/audio/finish.mp3"});
+    
     const [pending, startTransition] = useTransition();
+    const [lessonId, setLessonId] = useState(initialLessonId);
     const [hearts, setHearts] = useState(initialHeart);
     const [percentage, setPercentage] = useState(initialPercentage);
     const [challenges] = useState(initialLessonChallenges);
@@ -41,6 +65,13 @@ export const Quiz = ({
 
     const challenge = challenges[activeIndex];
     const options = challenge?.options || [];
+
+    // Play finish audio when lesson is completed
+    useEffect(() => {
+        if (!challenge) {
+            finishControls.play();
+        }
+    }, [challenge, finishControls]);
 
     const onNext = () => {
         setActiveIndex((current) => current + 1);
@@ -55,23 +86,55 @@ export const Quiz = ({
     if (!challenge) {
         return (
             <>
+            {finishAudio}
+            <Confetti
+                width={width}
+                height={height}
+                recycle={false}
+                numberOfPieces={500}
+                tweenDuration={1000}
+            />
+            <div className="flex flex-col gap-y-4 h-full">
                 <Header
                     hearts={hearts}
-                    percentage={percentage}
+                    percentage={100}
                     hasActiveSubscription={!!userSubscription?.isActive}
                 />
-                <div className="flex-1">
-                    <div className="h-full flex items-center justify-center">
-                        <div className="text-center">
-                            <h1 className="text-2xl font-bold mb-4 text-neutral-700">
-                                🎉 Lesson completed!
-                            </h1>
-                            <p className="text-muted-foreground">
-                                Great job! You've completed all challenges.
-                            </p>
-                        </div>
+                <div className="flex flex-1 flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                    <Image
+                        src="/images/finish.svg"
+                        alt="Finish"
+                        width={100}
+                        height={100}
+                        className="hidden lg:block animate-bounce"
+                    />
+                    <Image
+                        src="/images/finish.svg"
+                        alt="Finish"
+                        width={50}
+                        height={50}
+                        className="block lg:hidden animate-bounce"
+                    />
+                    <h1 className="text-xl lg:text-3xl font-bold text-neutral-700 animate-in fade-in zoom-in duration-700 delay-300">
+                        great job! <br/> you&apos;ve completed the lesson
+                    </h1>
+                    <div className="flex items-center gap-x-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
+                        <ResultCard
+                            variant="points"
+                            value={challenges.length * 10}
+                        />
+                        <ResultCard
+                            variant="hearts"
+                            value={hearts}
+                        />
                     </div>
                 </div>
+                <Footer
+                    lessonId={lessonId}
+                    status="completed"
+                    onCheck={() => router.push("/learn")}
+                />
+            </div>
             </>
         );
     }
@@ -103,10 +166,7 @@ export const Quiz = ({
                         return;
                     }
                     
-                    if(response?.success) {
-                        toast.success("Correct! ✨");
-                    }
-                    
+                    correctControls.play();
                     setStatus("correct");
                     setPercentage((prev) => prev + 100 / challenges.length);
 
@@ -127,10 +187,12 @@ export const Quiz = ({
                     }
 
                     if(response?.error === "Practice challenge cannot be reduced") {
+                        incorrectControls.play();
                         setStatus("wrong");
                         return;
                     }
 
+                    incorrectControls.play();
                     setStatus("wrong");
                     if(!response?.error) {
                         setHearts((prev) => Math.max(prev - 1, 0));
@@ -143,6 +205,9 @@ export const Quiz = ({
 
     return (
         <>
+        {correctAudio}
+        {incorrectAudio}
+        {finishAudio}
         <Header
             hearts={hearts}
             percentage={percentage}
