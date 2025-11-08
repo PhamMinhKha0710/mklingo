@@ -58,3 +58,4 @@ export const Question = ({ points }: Props) => {
         </div>
     );
 };
+ 
