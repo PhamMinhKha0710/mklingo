@@ -1,11 +1,13 @@
 import { create } from "zustand";
 
 type HeartsModalState = {
-    hearts: number;
-    setHearts: (hearts: number) => void;
+    isOpen: boolean;
+    open: () => void;
+    close: () => void;
 };
 
 export const useHeartsModel = create<HeartsModalState>((set) => ({
-    hearts: 5,
-    setHearts: (hearts: number) => set({ hearts }),
+    isOpen: false,
+    open: () => set({ isOpen: true }),
+    close: () => set({ isOpen: false }),
 }));

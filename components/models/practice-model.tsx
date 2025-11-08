@@ -1,5 +1,5 @@
 "use client"
-import { useHeartsModel } from "@/store/use-hearts-model";
+import { usePracticeModel } from "@/store/use-practice-model";
 import { Button } from "@/components/ui/button";
 import { 
     Dialog,
@@ -14,17 +14,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
-export const HeartsModel = () => {
-    const router = useRouter();
+export const PracticeModel = () => {
     const [isClient, setIsClient] = useState(false);
-    const { isOpen, close } = useHeartsModel();
+    const { isOpen, close } = usePracticeModel();
 
     useEffect(() => setIsClient(true), []);
-
-    const onClick = () => {
-        close();
-        router.push("/store")
-    }
 
     if(!isClient) return null;
 
@@ -33,13 +27,13 @@ export const HeartsModel = () => {
             <DialogContent className="max-w-md">
                 <DialogHeader>
                     <div className="flex items-center w-full justify-center mb-5">
-                        <Image src="/images/mascot_sad.svg" height={120} width={120} alt="Mascot" />
+                        <Image src="/images/heart.svg" height={100} width={100} alt="Heart" />
                     </div>
                     <DialogTitle className="text-center font-bold text-2xl">
-                        You ran out of hearts!
+                        Practice lesson
                     </DialogTitle>
                     <DialogDescription className="text-center text-base">
-                        Get Pro for unlimited hearts, or purchase them in the store.
+                        Use practice lesson to regain hearts and points. You cannot loose harts or points in practice mode.
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter className="mb-4">
@@ -50,21 +44,9 @@ export const HeartsModel = () => {
                         size="lg" 
                         onClick={() => {
                             close();
-                            router.push("/store");
                         }}
                         >
-                            Get unlimited hearts
-                        </Button>
-                        <Button 
-                        variant="dangerOutline" 
-                        className="w-full" 
-                        size="lg" 
-                        onClick={() => {
-                            close();
-                            router.push("/learn");
-                        }}
-                        >
-                            No thanks
+                            I understand
                         </Button>
                     </div>
                 </DialogFooter>

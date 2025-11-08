@@ -14,6 +14,9 @@ import Image from "next/image";
 import { ResultCard } from "./result-card";
 import { useRouter } from "next/navigation";
 import Confetti from "react-confetti";
+import { useHeartsModel } from "@/store/use-hearts-model";
+import { usePracticeModel } from "@/store/use-practice-model";
+
 
 type Props = {
     initialLessonId: number;
@@ -33,6 +36,15 @@ export const Quiz = ({
     initialLessonChallenges,
     userSubscription,
 }: Props) => {
+    const { open: openHeartsModal } = useHeartsModel();
+    const { open: openPracticeModal } = usePracticeModel();
+
+    useMount(() => {
+        if(initialPercentage === 100) {
+            openPracticeModal();
+        }
+    });
+
     const {width, height} = useWindowSize();
     const router = useRouter();
     const [
@@ -54,7 +66,11 @@ export const Quiz = ({
     const [pending, startTransition] = useTransition();
     const [lessonId, setLessonId] = useState(initialLessonId);
     const [hearts, setHearts] = useState(initialHeart);
-    const [percentage, setPercentage] = useState(initialPercentage);
+    const [percentage, setPercentage] = useState(() => {
+        return initialPercentage === 100 ? 0 : initialPercentage;
+    }
+
+    );
     const [challenges] = useState(initialLessonChallenges);
     const [activeIndex, setActiveIndex] = useState(() => {
         const uncompletedIndex = challenges.findIndex((challenge) => !challenge.completed);
@@ -162,7 +178,7 @@ export const Quiz = ({
                 upsertChallengeProgress(challenge.id)
                 .then((response) => {
                     if(response?.error === "hearts") {
-                        toast.error("You ran out of hearts! 💔");
+                        openHeartsModal();
                         return;
                     }
                     
