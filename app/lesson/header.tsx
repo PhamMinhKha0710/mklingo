@@ -30,7 +30,7 @@ export const Header = ({ hearts, percentage, hasActiveSubscription }: Props) => 
                  width={22} 
                  height={22} 
                  className="mr-2"/>
-                {hasActiveSubscription ? <InfinityIcon className="h-6 w-6 stroke-[3]"/> : hearts}
+                {hasActiveSubscription ? <InfinityIcon className="h-6 w-6 stroke-[3] shrink-0"/> : hearts}
             </div>
 
 
