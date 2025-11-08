@@ -1,36 +1,147 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="/public/images/banner.png" alt="Mklingo Banner" width="100%" />
+  
+  # 🦉 Mklingo - Learn Languages the Fun Way
+  
+  <p align="center">
+    <strong>Master new languages through interactive lessons, engaging challenges, and gamified learning experiences</strong>
+  </p>
+  
+  <p align="center">
+    <a href="#features">Features</a> •
+    <a href="#screenshots">Screenshots</a> •
+    <a href="#tech-stack">Tech Stack</a> •
+    <a href="#getting-started">Getting Started</a>
+  </p>
+</div>
 
-## Getting Started
+---
 
-First, run the development server:
+## ✨ About Mklingo
 
+Mklingo is a modern language learning platform that makes education enjoyable and effective. Whether you're a complete beginner or looking to perfect your skills, our platform offers a personalized learning journey tailored to your pace and goals.
+
+**Perfect for:**
+- 🎓 Students learning new languages
+- 🌍 Travelers preparing for adventures
+- 💼 Professionals expanding career opportunities
+- 🧠 Anyone passionate about language and culture
+
+## 🎯 Features
+
+### 🎮 Gamified Learning Experience
+- **Interactive Lessons** - Bite-sized lessons that fit your schedule
+- **Progress Tracking** - Watch your skills grow with detailed statistics
+- **Streak System** - Build daily habits with motivating streaks
+- **Leaderboards** - Compete with friends and learners worldwide
+
+### 💎 Premium Features
+- **Unlimited Hearts** - Learn without interruption
+- **Ad-Free Experience** - Focus on what matters
+- **Offline Mode** - Practice anywhere, anytime
+- **Advanced Analytics** - Deep insights into your progress
+
+### 🎨 Beautiful & Intuitive Design
+- **Modern UI/UX** - Clean, responsive design that works on all devices
+- **Dark Mode Support** - Easy on the eyes, day or night
+- **Smooth Animations** - Delightful interactions at every step
+- **Accessibility First** - Designed for everyone to learn comfortably
+
+### 🛠️ Admin Dashboard
+- **Content Management** - Easy-to-use admin panel for course creation
+- **Real-time Updates** - Manage lessons, challenges, and users efficiently
+- **Analytics Dashboard** - Track user engagement and learning outcomes
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="/public/images/home.png" alt="Mklingo Home" width="80%" />
+  <p><em>Beautiful landing page with course selection</em></p>
+</div>
+
+<div align="center">
+  <img src="/public/images/banner.png" alt="Learning Interface" width="80%" />
+  <p><em>Engaging lesson interface with progress tracking</em></p>
+</div>
+
+## 🚀 Tech Stack
+
+Built with modern technologies for optimal performance and scalability:
+
+- **Next.js 15** - React framework for production
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Beautiful, responsive styling
+- **Drizzle ORM** - Type-safe database queries
+- **Clerk Auth** - Secure authentication
+- **Stripe** - Payment processing
+- **React Admin** - Powerful admin interface
+
+## 🎯 Getting Started
+
+### Prerequisites
+- Node.js 18+ installed
+- PostgreSQL database
+
+### Quick Setup
+
+1. **Clone the repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/mklingo.git
+cd mklingo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Set up environment variables**
+```bash
+cp .env.example .env.local
+# Add your environment variables
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Run the development server**
+```bash
+npm run dev
+```
 
-## Learn More
+5. **Open your browser**
+```
+Visit http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🌟 Why Mklingo?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### For Users
+- **Free to Start** - Begin your learning journey at no cost
+- **Proven Methods** - Based on language acquisition research
+- **Community Driven** - Learn with millions of users worldwide
+- **Multiple Languages** - Choose from English, Vietnamese, German, and more
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### For Recruiters
+This project demonstrates:
+- ✅ Full-stack development expertise
+- ✅ Modern React/Next.js best practices
+- ✅ Complex state management
+- ✅ Payment integration (Stripe)
+- ✅ Admin panel development
+- ✅ Database design and optimization
+- ✅ Authentication & authorization
+- ✅ Responsive design principles
+- ✅ Clean, maintainable code architecture
 
-## Deploy on Vercel
+## 📝 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is built for educational and portfolio purposes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+---
+
+<div align="center">
+  <p>Made with ❤️ and lots of ☕</p>
+  <p>⭐ Star this repo if you find it helpful!</p>
+</div>
