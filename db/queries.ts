@@ -8,7 +8,7 @@ import { challenges, challengesOptions, courses,
     userSubscription,
 } from './schema';
 import { auth } from '@clerk/nextjs/server';
-import { eq } from 'drizzle-orm';
+import { desc, eq } from 'drizzle-orm';
 
 
 export const getUserProgress = cache(async () => {
@@ -41,11 +41,14 @@ export const getUnits = cache(async () => {
     }
     //TODO : Confirm whether order is needed 
     const data = await db.query.units.findMany({
+        orderBy: (units, { asc }) => [asc(units.order)],
         where: eq(units.courseId, userProgress.activeCourseId),
         with: {
             lessons: {
+                orderBy: (lessons, { asc }) => [asc(lessons.order)],
                 with: {
                     challenges: {
+                        orderBy: (challenges, { asc }) => [asc(challenges.order)],
                         with: {
                             challengesProgress: {
                                 where: eq(
@@ -84,7 +87,16 @@ export const getUnits = cache(async () => {
 export const getCourseById = cache(async (courseId: number) => {
     const data = await db.query.courses.findFirst({
         where: eq(courses.id, courseId),
-       //TODO: Populate with lessons
+       with: {
+        units: {
+            orderBy:(units, { asc }) => [asc(units.order)],
+            with: {
+                lessons: {
+                    orderBy: (lessons, { asc }) => [asc(lessons.order)],
+                }
+            },
+        },
+       },
     });
     return data;
 })
@@ -208,4 +220,23 @@ export const getUserSubscription = cache(async () => {
         ...data,
         isActive,
     };
+});
+
+
+export const getTopTenUsers = cache(async () => {
+    const { userId } = await auth();
+    if(!userId) {
+        return null;
+    }
+    const data = await db.query.userProgress.findMany({
+        orderBy: [desc(userProgress.points)],
+        limit: 10,
+        columns: {
+            userId: true,
+            userName: true,
+            userImageSrc: true,
+            points: true,
+        },
+    });
+    return data;
 });

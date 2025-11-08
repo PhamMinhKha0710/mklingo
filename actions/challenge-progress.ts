@@ -1,7 +1,7 @@
 "use server";
 
 import db from "@/db/drizzle";
-import { getUserProgress } from "@/db/queries";
+import { getUserProgress, getUserSubscription } from "@/db/queries";
 import { challenges, challengesProgress, lessons, userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { error } from "console";
@@ -13,8 +13,9 @@ export const upsertChallengeProgress = async (challengeId: number) => {
     if(!userId) {
         throw new Error("Unauthorized");
     }
-    const currentChallengeProgress = await getUserProgress();
-    if(!currentChallengeProgress) {
+    const currentUserProgress = await getUserProgress();
+    const userSubscription = await getUserSubscription();
+    if(!currentUserProgress) {
         throw new Error("User progress not found");
     }
     
@@ -35,7 +36,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
     });
     const isPractice = !!existingChallengeProgress;
 
-    if(currentChallengeProgress.hearts === 0 && !isPractice) {
+    if(currentUserProgress.hearts === 0 && !isPractice && !userSubscription?.isActive) {
         return { error: "hearts" };
     }
 
@@ -45,8 +46,8 @@ export const upsertChallengeProgress = async (challengeId: number) => {
         }).where(eq(challengesProgress.id, existingChallengeProgress.id));
 
         await db.update(userProgress).set({
-            hearts: Math.min(currentChallengeProgress.hearts + 1, 5),
-            points: currentChallengeProgress.points + 10,
+            hearts: Math.min(currentUserProgress.hearts + 1, 5),
+            points: currentUserProgress.points + 10,
         }).where(eq(userProgress.userId, userId));
 
         revalidatePath("/learn");
@@ -63,7 +64,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
     });
 
     await db.update(userProgress).set({
-        points: currentChallengeProgress.points + 10,
+        points: currentUserProgress.points + 10,
     }).where(eq(userProgress.userId, userId));
     
     revalidatePath("/learn");

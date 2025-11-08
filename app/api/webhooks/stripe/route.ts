@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import db from "@/db/drizzle";
 import { userSubscription } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: Request) {
     const body = await request.text();
@@ -38,8 +39,6 @@ export async function POST(request: Request) {
             const subscriptionItem = subscription.items.data[0];
             const currentPeriodEnd = (subscriptionItem as any).current_period_end;
 
-            console.log("current_period_end from item:", currentPeriodEnd);
-
             if (!currentPeriodEnd) {
                 throw new Error("current_period_end is missing from subscription item");
             }
@@ -52,7 +51,12 @@ export async function POST(request: Request) {
                 stripeCurrentPeriodEnd: new Date(currentPeriodEnd * 1000),
             });
 
-            console.log("✅ Subscription saved successfully!");
+            // Revalidate pages to show updated subscription status
+            revalidatePath("/shop");
+            revalidatePath("/learn");
+            revalidatePath("/lesson");
+            revalidatePath("/questions");
+            revalidatePath("/leaderboard");
         } catch (error: any) {
             console.error("Error in checkout.session.completed:", error);
             return new NextResponse(`Error: ${error.message}`, { status: 500 });
@@ -81,7 +85,12 @@ export async function POST(request: Request) {
                 stripeCurrentPeriodEnd: new Date(currentPeriodEnd * 1000),
             }).where(eq(userSubscription.stripeSubscriptionId, subscription.id));
 
-            console.log("✅ Subscription updated successfully!");
+            // Revalidate pages to show updated subscription status
+            revalidatePath("/shop");
+            revalidatePath("/learn");
+            revalidatePath("/lesson");
+            revalidatePath("/questions");
+            revalidatePath("/leaderboard");
         } catch (error: any) {
             console.error("Error in invoice.payment_succeeded:", error);
             // Return 200 to avoid retries

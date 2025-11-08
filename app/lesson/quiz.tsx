@@ -1,6 +1,6 @@
 "use client";
 
-import { challenges, challengesOptions } from "@/db/schema";
+import { challenges, challengesOptions, userSubscription } from "@/db/schema";
 import { use, useState, useTransition, useEffect } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
@@ -26,7 +26,7 @@ type Props = {
         completed: boolean;
         options: typeof challengesOptions.$inferSelect[];
     })[];
-    userSubscription: any;
+    userSubscription: (typeof userSubscription.$inferSelect & {isActive: boolean}) | null;
 }
 
 export const Quiz = ({
@@ -203,6 +203,13 @@ export const Quiz = ({
                     }
 
                     if(response?.error === "Practice challenge cannot be reduced") {
+                        incorrectControls.play();
+                        setStatus("wrong");
+                        return;
+                    }
+
+                    // User has active subscription - hearts are unlimited
+                    if(response?.error === "subscription") {
                         incorrectControls.play();
                         setStatus("wrong");
                         return;
