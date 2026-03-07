@@ -18,8 +18,9 @@ export async function POST(request: Request) {
             signature, 
             process.env.STRIPE_WEBHOOK_SECRET!
         );
-    } catch (error: any) {
-        return new NextResponse(`Webhook verification failed: ${error.message}`, { status: 400 });
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        return new NextResponse(`Webhook verification failed: ${message}`, { status: 400 });
     }
 
     // Handle checkout.session.completed event
@@ -35,12 +36,11 @@ export async function POST(request: Request) {
                 session.subscription as string
             );
 
-            // Get current_period_end from subscription item
-            const subscriptionItem = subscription.items.data[0];
-            const currentPeriodEnd = (subscriptionItem as any).current_period_end;
+            // Get current_period_end from subscription
+            const currentPeriodEnd = (subscription as any).current_period_end || Date.now() / 1000;
 
             if (!currentPeriodEnd) {
-                throw new Error("current_period_end is missing from subscription item");
+                throw new Error("current_period_end is missing from subscription");
             }
 
             await db.insert(userSubscription).values({
@@ -57,9 +57,10 @@ export async function POST(request: Request) {
             revalidatePath("/lesson");
             revalidatePath("/questions");
             revalidatePath("/leaderboard");
-        } catch (error: any) {
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
             console.error("Error in checkout.session.completed:", error);
-            return new NextResponse(`Error: ${error.message}`, { status: 500 });
+            return new NextResponse(`Error: ${message}`, { status: 500 });
         }
     }
 
@@ -67,7 +68,7 @@ export async function POST(request: Request) {
     if (event.type === "invoice.payment_succeeded") {
         const invoice = event.data.object as Stripe.Invoice;
         
-        const subscriptionId = (invoice as any).subscription;
+        const subscriptionId = (invoice as any).subscription as string | undefined;
         if (!subscriptionId) {
             // Invoice might not be for a subscription, just return 200
             return new NextResponse(null, { status: 200 });
@@ -76,9 +77,8 @@ export async function POST(request: Request) {
         try {
             const subscription = await stripe.subscriptions.retrieve(subscriptionId as string);
             
-            // Get current_period_end from subscription item
-            const subscriptionItem = subscription.items.data[0];
-            const currentPeriodEnd = (subscriptionItem as any).current_period_end;
+            // Get current_period_end from subscription
+            const currentPeriodEnd = (subscription as any).current_period_end || Date.now() / 1000;
 
             await db.update(userSubscription).set({
                 stripePriceId: subscription.items.data[0].price.id,
@@ -91,7 +91,7 @@ export async function POST(request: Request) {
             revalidatePath("/lesson");
             revalidatePath("/questions");
             revalidatePath("/leaderboard");
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("Error in invoice.payment_succeeded:", error);
             // Return 200 to avoid retries
             return new NextResponse(null, { status: 200 });
