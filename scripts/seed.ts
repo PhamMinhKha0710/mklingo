@@ -333,8 +333,7 @@ const main = async () => {
       {
         id: 2,
         lessonId: 1,
-        type: "SELECT",
-        imageSrc: "/images/mascot.svg",
+        type: "SELECT" as const,
         question: 'Which picture shows someone "running"?',
         order: 2,
       },
