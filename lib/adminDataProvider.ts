@@ -124,7 +124,7 @@ export const adminDataProvider: DataProvider = {
             method: "DELETE",
         });
         
-        return { data: params.previousData };
+        return { data: (params.previousData ?? {}) as RecordType };
     },
 
     deleteMany: async (resource, params) => {
