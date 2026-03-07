@@ -1,3 +1,5 @@
+"use client";
+
 import App from "./app";
 
 const AdminPage = () => {
