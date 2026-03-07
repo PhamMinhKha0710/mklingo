@@ -8,7 +8,11 @@ import { revalidatePath } from "next/cache";
 
 export async function POST(request: Request) {
     const body = await request.text();
-    const signature = request.headers.get("Stripe-Signature") as string;
+    const signature = request.headers.get("Stripe-Signature");
+
+    if (!signature) {
+        return new NextResponse("Missing Stripe signature", { status: 400 });
+    }
 
     let event: Stripe.Event;
     
@@ -36,8 +40,9 @@ export async function POST(request: Request) {
                 session.subscription as string
             );
 
-            // Get current_period_end from subscription
-            const currentPeriodEnd = (subscription as any).current_period_end || Date.now() / 1000;
+            // Get timestamp from subscription - default to current time if not available
+            const { current_period_end: periodEnd } = subscription as unknown as { current_period_end: number };
+            const currentPeriodEnd = periodEnd || Math.floor(Date.now() / 1000);
 
             if (!currentPeriodEnd) {
                 throw new Error("current_period_end is missing from subscription");
@@ -68,17 +73,20 @@ export async function POST(request: Request) {
     if (event.type === "invoice.payment_succeeded") {
         const invoice = event.data.object as Stripe.Invoice;
         
-        const subscriptionId = (invoice as any).subscription as string | undefined;
+        const invoiceData = invoice as unknown as { subscription?: string | null };
+        const subscriptionId = typeof invoiceData.subscription === "string" ? invoiceData.subscription : null;
+            
         if (!subscriptionId) {
             // Invoice might not be for a subscription, just return 200
             return new NextResponse(null, { status: 200 });
         }
 
         try {
-            const subscription = await stripe.subscriptions.retrieve(subscriptionId as string);
+            const subscription = await stripe.subscriptions.retrieve(subscriptionId);
             
-            // Get current_period_end from subscription
-            const currentPeriodEnd = (subscription as any).current_period_end || Date.now() / 1000;
+            // Get timestamp from subscription - default to current time if not available
+            const { current_period_end: periodEnd } = subscription as unknown as { current_period_end: number };
+            const currentPeriodEnd = periodEnd || Math.floor(Date.now() / 1000);
 
             await db.update(userSubscription).set({
                 stripePriceId: subscription.items.data[0].price.id,
