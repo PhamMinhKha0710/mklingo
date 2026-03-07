@@ -119,12 +119,13 @@ export const adminDataProvider: DataProvider = {
         return { data: params.ids };
     },
 
-    delete: async (resource, params) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    delete: async (resource, params): Promise<any> => {
         await fetch(`${apiUrl}/${resource}?id=${params.id}`, {
             method: "DELETE",
         });
 
-        return { data: (params.previousData ?? { id: params.id }) as any };
+        return { data: params.previousData ?? { id: params.id } };
     },
 
     deleteMany: async (resource, params) => {
