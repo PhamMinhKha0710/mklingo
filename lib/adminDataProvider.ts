@@ -119,12 +119,15 @@ export const adminDataProvider: DataProvider = {
         return { data: params.ids };
     },
 
-    delete: async (resource, params) => {
+    delete: async <RecordType extends Record<string, unknown>>(
+        resource: string,
+        params: { id: RecordType["id"]; previousData: RecordType }
+    ) => {
         await fetch(`${apiUrl}/${resource}?id=${params.id}`, {
             method: "DELETE",
         });
         
-        return { data: params.previousData as Record<string, unknown> };
+        return { data: params.previousData };
     },
 
     deleteMany: async (resource, params) => {
