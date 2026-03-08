@@ -1,4 +1,4 @@
-import { DataProvider, RaRecord } from "react-admin";   
+import { DataProvider } from "react-admin";   
 
 const apiUrl = "/api/admin";
 
@@ -66,7 +66,7 @@ export const adminDataProvider: DataProvider = {
         }
     },
 
-    getManyReference: async (resource, params) => {
+    getManyReference: async (resource, _params) => {
         try {
             const response = await fetch(`${apiUrl}/${resource}`);
             if (!response.ok) {
@@ -124,7 +124,7 @@ export const adminDataProvider: DataProvider = {
             method: "DELETE",
         });
 
-        return { data: (params.previousData ?? { id: params.id }) as any };
+        return { data: (params.previousData ?? { id: params.id }) as unknown };
     },
 
     deleteMany: async (resource, params) => {
