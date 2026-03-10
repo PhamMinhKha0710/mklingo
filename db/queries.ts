@@ -212,9 +212,10 @@ export const getUserSubscription = cache(async () => {
     });
     if (!data) return null;
 
-    const isActive = 
-    data.stripePriceId && 
-    data.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now();
+    const isActive = !!(
+        data.stripePriceId && 
+        data.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now()
+    );
 
     return {
         ...data,

@@ -1,8 +1,7 @@
 "use client";
 
-import { Courses } from "@/db/schema";  
+import { courses, userProgress } from "@/db/schema";  
 import { Card } from "./card";
-import { userProgress } from "@/db/schema";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { upsertUserProgress } from "@/actions/user-progress";
@@ -10,7 +9,7 @@ import { toast } from "sonner";
 
 
 type Props = {
-    courses: typeof Courses.$inferSelect[];
+    courses: typeof courses.$inferSelect[];
     activeCourseId?: typeof userProgress.$inferSelect.activeCourseId;
 }
 
