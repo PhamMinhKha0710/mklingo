@@ -119,15 +119,12 @@ export const adminDataProvider: DataProvider = {
         return { data: params.ids };
     },
 
-    delete: async <RecordType extends RaRecord = any>(
-        resource: string,
-        params: { id: RecordType["id"]; previousData: RecordType }
-    ): Promise<DeleteResult<RecordType>> => {
+    delete: async (resource, params) => {
         await fetch(`${apiUrl}/${resource}?id=${params.id}`, {
             method: "DELETE",
         });
 
-        return { data: params.previousData };
+        return { data: params.previousData } as DeleteResult;
     },
 
     deleteMany: async (resource, params) => {
