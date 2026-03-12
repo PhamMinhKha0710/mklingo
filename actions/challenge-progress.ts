@@ -6,7 +6,7 @@ import { challenges, challengesProgress, lessons, userProgress } from "@/db/sche
 import { auth } from "@clerk/nextjs/server";
 import { error } from "console";
 import { and, eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export const upsertChallengeProgress = async (challengeId: number) => {
     const {userId} = await auth();
@@ -55,6 +55,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
         revalidatePath("/questions");
         revalidatePath("/leaderboard");
         revalidatePath(`/lesson/${lessonId}`);
+        revalidateTag("leaderboard");
         return { success: "Challenge completed" };
     }
     await db.insert(challengesProgress).values({
@@ -72,5 +73,6 @@ export const upsertChallengeProgress = async (challengeId: number) => {
     revalidatePath("/questions");
     revalidatePath("/leaderboard");
     revalidatePath(`/lesson/${lessonId}`);
+    revalidateTag("leaderboard");
     return { success: "Challenge completed" };
 }

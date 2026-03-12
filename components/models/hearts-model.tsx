@@ -11,22 +11,10 @@ import {
 } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
 
 export const HeartsModel = () => {
     const router = useRouter();
-    const [isClient, setIsClient] = useState(false);
     const { isOpen, close } = useHeartsModel();
-
-    useEffect(() => setIsClient(true), []);
-
-    const onClick = () => {
-        close();
-        router.push("/store")
-    }
-
-    if(!isClient) return null;
 
     return (
         <Dialog open={isOpen} onOpenChange={close}>

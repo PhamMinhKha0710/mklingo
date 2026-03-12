@@ -1,6 +1,7 @@
 import db from "@/db/drizzle";
 import { courses } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -24,7 +25,7 @@ export async function POST(req: Request) {
         title: body.title,
         imageSrc: body.imageSrc,
     }).returning();
-    
+    revalidateTag("courses");
     return NextResponse.json(data[0]);
 }
 
@@ -37,7 +38,7 @@ export async function PUT(req: Request) {
         })
         .where(eq(courses.id, body.id))
         .returning();
-    
+    revalidateTag("courses");
     return NextResponse.json(data[0]);
 }
 
@@ -50,6 +51,7 @@ export async function DELETE(req: Request) {
     }
 
     await db.delete(courses).where(eq(courses.id, parseInt(id)));
+    revalidateTag("courses");
     return NextResponse.json({ success: true });
 }
 

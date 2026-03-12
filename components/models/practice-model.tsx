@@ -9,18 +9,10 @@ import {
     DialogDescription,
     DialogFooter,
 } from "@/components/ui/dialog";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
 
 export const PracticeModel = () => {
-    const [isClient, setIsClient] = useState(false);
     const { isOpen, close } = usePracticeModel();
-
-    useEffect(() => setIsClient(true), []);
-
-    if(!isClient) return null;
 
     return (
         <Dialog open={isOpen} onOpenChange={close}>

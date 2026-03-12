@@ -12,21 +12,17 @@ import {
 import { XIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+
 export const ExitModel = () => {
     const router = useRouter();
-    const [isClient, setIsClient] = useState(false);
     const { isOpen, close } = useExitModel();
-
-    useEffect(() => setIsClient(true), []);
-    if(!isClient) return null;
 
     return (
         <Dialog open={isOpen} onOpenChange={close}>
             <DialogContent className="max-w-md">
                 <DialogHeader>
                     <div className="flex items-center w-full justify-center mb-5">
-                        <Image src="/images/mascot_sad.svg" height={120} width={120} alt="Mascot" />
+                        <Image src="/images/sad.svg" height={120} width={120} alt="Mascot" />
                     </div>
                     <DialogTitle className="text-center font-bold text-2xl">Wait, don&apos;t go!</DialogTitle>
                     <DialogDescription className="text-center text-base">

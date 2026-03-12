@@ -23,7 +23,7 @@ export const SidebarItem = ({ label, iconSrc, href }: Props) => {
             asChild
             >
            
-            <Link href={href}>
+            <Link href={href} prefetch>
 
             <Image 
             src={iconSrc}

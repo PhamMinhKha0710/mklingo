@@ -14,7 +14,7 @@ export default function Home() {
     <div className="max-w-[1200px] mx-auto flex-1 w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 p-4">
       {/* Hero Image - Left side on desktop, top on mobile */}
       <div className="relative w-full lg:w-[60%] h-[280px] lg:h-[500px]">
-        <Image src="/images/hero.svg" fill alt="hero" className="object-contain" />
+        <Image src="/images/hero.svg" fill alt="hero" className="object-contain" priority />
       </div>
       
       {/* Content - Right side on desktop, bottom on mobile */}
