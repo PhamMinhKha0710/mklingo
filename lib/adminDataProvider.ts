@@ -10,7 +10,7 @@ export const adminDataProvider: DataProvider = {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            
+
             return {
                 data: Array.isArray(data) ? data : [],
                 total: Array.isArray(data) ? data.length : 0,
@@ -28,7 +28,7 @@ export const adminDataProvider: DataProvider = {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            
+
             return { data };
         } catch (error) {
             console.error(`Error fetching ${resource} with id ${params.id}:`, error);
@@ -41,7 +41,7 @@ export const adminDataProvider: DataProvider = {
             if (!params.ids || params.ids.length === 0) {
                 return { data: [] };
             }
-            
+
             const promises = params.ids.map(async (id) => {
                 try {
                     const response = await fetch(`${apiUrl}/${resource}?id=${id}`);
@@ -55,10 +55,10 @@ export const adminDataProvider: DataProvider = {
                     return null;
                 }
             });
-            
+
             const results = await Promise.all(promises);
             const data = results.filter(item => item !== null);
-            
+
             return { data };
         } catch (error) {
             console.error(`Error in getMany for ${resource}:`, error);
@@ -73,7 +73,7 @@ export const adminDataProvider: DataProvider = {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            
+
             return {
                 data: Array.isArray(data) ? data : [],
                 total: Array.isArray(data) ? data.length : 0,
@@ -91,7 +91,7 @@ export const adminDataProvider: DataProvider = {
             body: JSON.stringify(params.data),
         });
         const data = await response.json();
-        
+
         return { data };
     },
 
@@ -102,7 +102,7 @@ export const adminDataProvider: DataProvider = {
             body: JSON.stringify({ ...params.data, id: params.id }),
         });
         const data = await response.json();
-        
+
         return { data };
     },
 
@@ -115,7 +115,7 @@ export const adminDataProvider: DataProvider = {
             })
         );
         await Promise.all(promises);
-        
+
         return { data: params.ids };
     },
 
@@ -124,7 +124,8 @@ export const adminDataProvider: DataProvider = {
             method: "DELETE",
         });
 
-        return { data: params.previousData } as DeleteResult;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return { data: params.previousData as any };
     },
 
     deleteMany: async (resource, params) => {
@@ -134,7 +135,7 @@ export const adminDataProvider: DataProvider = {
             })
         );
         await Promise.all(promises);
-        
+
         return { data: params.ids };
     },
 };

@@ -17,8 +17,11 @@ type Props = {
     status?: "correct" | "wrong" | "none";
     type: typeof challenges.$inferSelect["type"];
 }
+// Minimal silent WAV - tránh lỗi empty src khi audioSrc null (browser tải lại page)
+const SILENT_AUDIO = "data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA==";
+
 export const Card = ({ id, text, imageSrc, shortcut, selected, onClick, status, audioSrc, type, disabled }: Props) => {
-    const [audio, _, controls] = useAudio ({src: audioSrc || ""})
+    const [audio, _, controls] = useAudio({ src: audioSrc || SILENT_AUDIO });
     const handleClick = useCallback(() => {
         if(disabled) return;
         controls.play();

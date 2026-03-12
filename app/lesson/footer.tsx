@@ -21,7 +21,7 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
             status === "wrong" && "border-transparent bg-rose-100",
         )}
         >
-            <div className="max-w-[1140px] mx-auto h-full max-auto flex items-center justify-between px-6 lg:px-10"
+            <div className="max-w-[1140px] mx-auto h-full flex items-center justify-between px-6 lg:px-10"
             >
                 {status === "correct" && (
                     <div className="text-green-600 font-bold text-base lg:text-2xl flex items-center">

@@ -9,7 +9,8 @@
     "lint": "eslint",
     "db:studio": "npx drizzle-kit studio",
     "db:push": "npx drizzle-kit push",
-    "db:seed": "tsx ./scripts/seed.ts"
+    "db:seed": "tsx ./scripts/seed.ts",
+    "db:prod": "tsx ./scripts/prod.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.33.7",
@@ -39,6 +40,7 @@
     "stripe": "^19.3.0",
     "tailwind-merge": "^3.3.1",
     "use-sound": "^5.0.0",
+    "ws": "^8.19.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {

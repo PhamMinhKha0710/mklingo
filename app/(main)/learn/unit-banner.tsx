@@ -4,9 +4,10 @@ import { NotebookText } from "lucide-react";
 type Props = {
     title: string;
     description: string;
+    activeLessonId?: number;
 };
 
-export const UnitBanner = ({title, description}: Props) => {
+export const UnitBanner = ({ title, description, activeLessonId }: Props) => {
     return (
         <div className="w-full rounded-xl bg-green-500 p-5 text-white flex items-center justify-between">
             <div className="space-y-2.5">
@@ -20,8 +21,8 @@ export const UnitBanner = ({title, description}: Props) => {
             <Link href="/lesson">
                 <Button variant="secondary" size="lg" className="hidden xl:flex border-2 border-b-4 active:border-b-2"
                 >
-                <NotebookText className="mr-2" />
-                continue
+                    <NotebookText className="mr-2" />
+                    continue
                 </Button>
             </Link>
         </div>

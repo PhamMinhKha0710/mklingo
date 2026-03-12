@@ -9,18 +9,12 @@ import { Promo } from "@/components/ui/promo";
 import { Question } from "@/components/ui/question";
 
 const ShopPage = async () => {
-    const userProgressData = await getUserProgress();
-    const userSubscriptionData = await getUserSubscription();
-
-    const [
-        userProgress,
-        userSubscription,
-    ] = await Promise.all([
-        userProgressData,
-        userSubscriptionData,
+    const [userProgress, userSubscription] = await Promise.all([
+        getUserProgress(),
+        getUserSubscription(),
     ]);
 
-    if (!userProgressData || !userProgressData.activeCourse) {
+    if (!userProgress || !userProgress.activeCourse) {
         redirect("/courses");
     }
 
@@ -30,15 +24,15 @@ const ShopPage = async () => {
         <div className="flex flex-row-reverse gap-[48px] px-6">
             <StickyWrapper>
                 <UserProgress
-                    activeCourse={userProgressData.activeCourse}
-                    hearts={userProgressData.hearts}
-                    points={userProgressData.points}
+                    activeCourse={userProgress.activeCourse}
+                    hearts={userProgress.hearts}
+                    points={userProgress.points}
                     hasActiveSubscription={isPro}
                 />
                 {!isPro && (
                     <Promo />
                 )}
-                <Question points={userProgressData.points} />
+                <Question points={userProgress.points} />
             </StickyWrapper>
             <FeedWrapper>
                 <div className="w-full flex flex-col items-center">
@@ -66,8 +60,8 @@ const ShopPage = async () => {
 
                     {/* Items Section */}
                     <Items
-                        hearts={userProgressData.hearts}
-                        points={userProgressData.points}
+                        hearts={userProgress.hearts}
+                        points={userProgress.points}
                         hasActiveSubscription={isPro}
                     />
                 </div>
